@@ -12,6 +12,11 @@ Router.onRouteChangeStart = url => {
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const Header = styled.header`
   display: flex;
   align-content: center;
@@ -39,16 +44,15 @@ const NavButton = styled.a`
   color: #ecedf2;
   padding: 10px;
   margin: 10px;
-  border-radius: 40%;
 
   :hover {
     cursor: pointer;
-    background: #218da1;
+    border-bottom: 2px double #ecedf2;
   }
 `;
 
 export default ({ children, title }) => (
-  <div>
+  <Main>
     <Head>
       <title>SCB Portfolio</title>
     </Head>
@@ -58,6 +62,9 @@ export default ({ children, title }) => (
         <div>
           <Link href="/">
             <NavButton>HOME</NavButton>
+          </Link>
+          <Link href="/blog">
+            <NavButton>BLOG</NavButton>
           </Link>
           <Link href="/about">
             <NavButton>ABOUT</NavButton>
@@ -69,6 +76,6 @@ export default ({ children, title }) => (
       </Nav>
     </Header>
     {children}
-    <footer>Footer</footer>
-  </div>
+    <footer></footer>
+  </Main>
 );

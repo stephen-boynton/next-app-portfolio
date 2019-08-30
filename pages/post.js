@@ -6,21 +6,15 @@ import { useEffect, useState } from "react";
 import PageHeader from "../components/PageHeader";
 import { PageTitle, SubSectionHeader } from "../components/Typography";
 
-export default () => {
+export default ({
+  url: {
+    query: { title }
+  }
+}) => {
   const [gitHubInfo, setGitHubInfo] = useState({});
-
-  useEffect(() => {
-    const info = fetch("https://api.github.com/users/stephen-boynton")
-      .then(u => u.json())
-      .then(setGitHubInfo);
-  }, []);
-
   return (
     <Layout>
-      <PageHeader title="About" align="left" />
-      <div>
-        <GitHubCard {...gitHubInfo} />
-      </div>
+      <PageHeader title={title} align="right" />
     </Layout>
   );
 };
